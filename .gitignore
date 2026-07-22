@@ -20,6 +20,7 @@ instance/
 # Operating System Files
 .DS_Store
 Thumbs.db
+.db
 
 # Testing and Coverage
 .pytest_cache/

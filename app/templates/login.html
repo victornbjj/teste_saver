@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Login </title>
+    <link rel="stylesheet" href="static/styles/style.css">
+</head>
+
+<body>
+
+    <form action="{{url_for('auth.login')}}" method="post">
+
+        <h1>Login</h1>
+
+        <div>
+            <label for="username">Usuario ou email: </label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <div>
+            <label for="password">Senha:</label>
+            <input type="password" , id="password" name="password" required>
+
+        </div>
+        <button type="submit">Acessar</button>
+
+
+    </form>
+
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    
+
+</body>
+<script>
+    window.alert("Olá! seja bem vindo ao sistema de agendamento medico, fico feliz em ter você aqui.")
+    window.confirm("O sistema foi desenvolvido para o fins academicos, eu espero que goste!")
+</script>
+
+</html>

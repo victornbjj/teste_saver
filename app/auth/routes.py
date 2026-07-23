@@ -1,7 +1,13 @@
+import sqlite3
+import logging
+
 from flask import Blueprint, request, render_template, redirect, url_for, make_response
 from werkzeug.security import check_password_hash
 from app.database import get_db_connection
 from app.auth.jwt_utils import generate_token
+
+
+logger = logging.getLogger(__name__)
 
 auth_bp = Blueprint("auth", __name__)
 
@@ -16,11 +22,22 @@ def login():
     username = request.form.get("username")
     password = request.form.get("password")
 
-    conn = get_db_connection()
-    user = conn.execute(
+    if not username or not password:
+        return render_template("login.html", error="Usuário ou senha inválidos")
+
+    try:
+        conn = get_db_connection()
+        user = conn.execute(
         "SELECT * FROM users WHERE username = ?", (username,)
-    ).fetchone()
-    conn.close()
+        ).fetchone()
+        conn.close()
+    except sqlite3.Error as e:
+        logger.error("Error de conexão com o Banco de dados: %s", e)
+        return render_template(
+            "login.html",
+            error="Não foi posivel acessar o sistema no momento. Tente novamente mais tarde."
+        )
+    
 
     if user is None or not check_password_hash(user["password_hash"], password):
         return render_template("login.html", error="Usuário ou senha inválidos")
@@ -33,6 +50,6 @@ def login():
         token,
         httponly=True,       
         samesite="Lax",      
-        max_age=2 * 60 * 60  # 2h, bate com a expiração do token
+        max_age=2 * 60 * 60 
     )
     return response

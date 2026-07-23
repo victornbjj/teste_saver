@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_jwt_extended import JWTManager
 from dotenv import load_dotenv
 import os
 
@@ -10,7 +9,6 @@ def create_app():
     app.config["SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
     app.config["JWT_TOKEN_LOCATION"] = ["cookies"]
 
-    JWTManager(app)
 
 
     

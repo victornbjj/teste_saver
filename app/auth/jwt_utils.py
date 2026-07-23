@@ -35,7 +35,7 @@ def jwt_required(f):
     @wraps(f)
 
     def decorated(*args, **kwargs):
-        token = request.cookies.get("access_token")
+        token = request.cookies.get("access_token_cookie")
         if not token:
             return redirect(url_for("auth.login_page"))
 

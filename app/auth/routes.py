@@ -5,7 +5,7 @@ from app.auth.jwt_utils import generate_token
 
 auth_bp = Blueprint("auth", __name__)
 
-COOKIE_NAME = "access_token" 
+COOKIE_NAME = "access_token_cookie" 
 
 @auth_bp.route("/login", methods=["GET"])
 def login_page():
@@ -31,8 +31,8 @@ def login():
     response.set_cookie(
         COOKIE_NAME,
         token,
-        httponly=True,       # JS não consegue ler o cookie (protege contra XSS)
-        samesite="Lax",      # protege contra CSRF básico
+        httponly=True,       
+        samesite="Lax",      
         max_age=2 * 60 * 60  # 2h, bate com a expiração do token
     )
     return response

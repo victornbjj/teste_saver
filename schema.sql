@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+DROP TABLE IF EXISTS login_attempts;
+CREATE TABLE login_attempts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username_tentado TEXT NOT NULL,
+    sucesso INTEGER NOT NULL,  -- SQLite não tem BOOLEAN nativo; 0/1
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

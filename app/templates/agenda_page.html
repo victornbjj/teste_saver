@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Agendamentos</h1>
+
+   {% if erro %}
+<div class="alert alert-danger">
+    {{ erro }}
+</div>
+
+{% else %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Paciente</th>
+            <th>CPF</th>
+            <th>Médico</th>
+            <th>Especialidade</th>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Convênio</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for agendamento in agendamentos %}
+        <tr>
+            <td>{{ agendamento.paciente }}</td>
+            <td>{{ agendamento.cpf }}</td>
+            <td>{{ agendamento.medico }}</td>
+            <td>{{ agendamento.especialidade }}</td>
+            <td>{{ agendamento.data }}</td>
+            <td>{{ agendamento.horario }}</td>
+            <td>{{ agendamento.convenio }}</td>
+            <td>{{ agendamento.status }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{% endif %}
+
+
+</body>
+</html>

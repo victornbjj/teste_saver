@@ -1,0 +1,69 @@
+#agenda-table {
+    max-width: 1200px;
+    margin: 24px auto 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #2222ed 0%, #000103 100%);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(34, 74, 142, 0.15);
+    border: 1px solid #d9e7ff;
+}
+
+#agenda-table .tabulator {
+    border-radius: 12px;
+    overflow: hidden;
+    border: none;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+#agenda-table .tabulator-header {
+    background: linear-gradient(135deg, #2d2df1 0%, #4c5dff 100%);
+    color: #fff;
+}
+
+#agenda-table .tabulator-col {
+    border-right: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#agenda-table .tabulator-cell {
+    border-color: #e4ebf7;
+    padding: 10px 12px;
+}
+
+#agenda-table .tabulator-row-even {
+    background-color: #f7faff;
+}
+
+#agenda-table .tabulator-row-odd {
+    background-color: #ffffff;
+}
+
+#agenda-table .tabulator-row:hover {
+    background-color: #eaf2ff;
+}
+
+#agenda-table .tabulator-placeholder {
+    color: #6b7280;
+    font-style: italic;
+}
+
+#title_page {
+    text-align: center;
+    color: #1f3a8a;
+    margin-bottom: 16px;
+}
+
+#busca {
+    display: block;
+    width: min(480px, 90%);
+    margin: 0 auto 12px;
+    padding: 10px 12px;
+    border: 1px solid #c7d2fe;
+    border-radius: 999px;
+    outline: none;
+    font-size: 14px;
+}
+
+#busca:focus {
+    border-color: #4c5dff;
+    box-shadow: 0 0 0 3px rgba(76, 93, 255, 0.15);
+}
